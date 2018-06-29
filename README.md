@@ -4,8 +4,6 @@ Hospital App
 
 Project outline was given in the Programming 2 Formative Assessment 2 pdf file
 
-Visual Studio project file located in C-Final/CTUCare/CTUCare.sln
+App has not been published, you can view the Visual Studio project file in C-Final/CTUCare/CTUCare.sln
 
-View the database in the Database folder
-
-Manuals available in default directory
+Manuals available in default directory, refer to technical manual for full overview of project
