@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CampusModelStoreContainer" CdmEntityContainer="CampusEntities">
+    <EntitySetMapping Name="Parents">
+      <EntityTypeMapping TypeName="CampusModel.Parent">
+        <MappingFragment StoreEntitySet="Parents">
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="parentName" ColumnName="parentName" />
+          <ScalarProperty Name="parentSurname" ColumnName="parentSurname" />
+          <ScalarProperty Name="parentIDNumber" ColumnName="parentIDNumber" />
+          <ScalarProperty Name="parentAge" ColumnName="parentAge" />
+          <ScalarProperty Name="parentContactNumber" ColumnName="parentContactNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="CampusModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="studentPassword" ColumnName="studentPassword" />
+          <ScalarProperty Name="studentUserName" ColumnName="studentUserName" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="studentName" ColumnName="studentName" />
+          <ScalarProperty Name="studentSurname" ColumnName="studentSurname" />
+          <ScalarProperty Name="studentIDNumber" ColumnName="studentIDNumber" />
+          <ScalarProperty Name="studentAge" ColumnName="studentAge" />
+          <ScalarProperty Name="studentContactNumber" ColumnName="studentContactNumber" />
+          <ScalarProperty Name="studentParentID" ColumnName="studentParentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

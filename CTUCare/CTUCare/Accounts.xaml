@@ -1,0 +1,35 @@
+﻿<Window x:Class="CTUCare.Accounts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTUCare"
+        mc:Ignorable="d"
+        Title="Accounts and History" Height="411.733" Width="793.333"
+        Icon="images/Picture5.png" BorderBrush="#FF3699F1" BorderThickness="4">
+    <Grid>
+        <ListBox x:Name="patientList" Margin="20,51,0,0" BorderBrush="#FF3699F1" BorderThickness="1.5" Height="230" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" />
+        <Label x:Name="label" Content="Statement" HorizontalAlignment="Left" Margin="20,25,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <ListBox x:Name="procedureList" Margin="211,51,0,0" BorderBrush="#FF3699F1" BorderThickness="1.5" Height="198" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" />
+        <Label x:Name="label_Copy" Content="Procedure" HorizontalAlignment="Left" Margin="211,25,0,0" Height="26" VerticalAlignment="Top" Width="87"/>
+        <TextBox Focusable="False" x:Name="txtProPrice" HorizontalAlignment="Left" Height="23" Margin="211,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <ListBox x:Name="procedureList_Copy" Margin="397,51,0,0" BorderBrush="#FF3699F1" BorderThickness="1.5" Height="198" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
+        <Label x:Name="label_Copy2" Content="Medicines" HorizontalAlignment="Left" Margin="397,25,0,0" Height="26" VerticalAlignment="Top" Width="151"/>
+        <TextBox Focusable="False" x:Name="txtMediPrice" HorizontalAlignment="Left" Height="23" Margin="397,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <Label x:Name="label_Copy4" Content="Dr's Consultation" HorizontalAlignment="Left" Margin="591,26,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <ListBox x:Name="medicineList" Margin="397,51,0,0" BorderBrush="#FF3699F1" BorderThickness="1.5" Height="198" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" />
+        <TextBox Focusable="False" x:Name="txtDrsConsultation" HorizontalAlignment="Left" Height="23" Margin="591,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <Label x:Name="label_Copy5" Content="Day In" HorizontalAlignment="Left" Margin="591,158,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <TextBox Focusable="False" x:Name="txtDayIn" HorizontalAlignment="Left" Height="23" Margin="591,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <Label x:Name="label_Copy6" Content="Day Out" HorizontalAlignment="Left" Margin="591,225,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <TextBox Focusable="False" x:Name="txtDayOut" HorizontalAlignment="Left" Height="23" Margin="591,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <Label x:Name="label_Copy7" Content="Total" HorizontalAlignment="Left" Margin="591,279,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <TextBox Focusable="False" x:Name="txtTotalCost" HorizontalAlignment="Left" Height="23" Margin="591,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1"/>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="20,314,0,0" VerticalAlignment="Top" Width="150" Height="23" BorderBrush="#FF3699F1" BorderThickness="2" Background="White" Click="btnLoad_Click"/>
+        <Button x:Name="btnProPrice" Content="See Price" HorizontalAlignment="Left" Margin="211,258,0,0" VerticalAlignment="Top" Width="150" Height="23" BorderBrush="#FF3699F1" BorderThickness="2" Background="White" Click="btnProPrice_Click" />
+        <Button x:Name="btnMediPrice" Content="See Price" HorizontalAlignment="Left" Margin="397,258,0,0" VerticalAlignment="Top" Width="151" Height="23" BorderBrush="#FF3699F1" BorderThickness="2" Background="White" Click="btnMediPrice_Click" />
+        <Label x:Name="label_Copy1" Content="Dr" HorizontalAlignment="Left" Margin="591,92,0,0" Height="26" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtDr" HorizontalAlignment="Left" Height="23" Margin="591,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" BorderThickness="2" BorderBrush="#FF3699F1" Focusable="False"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="CTUCare.NewPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTUCare"
+        mc:Ignorable="d"
+        Title="New Patient" Height="483.6" Width="364.03"
+        Icon="images/Picture5.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="96*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="172*"/>
+            <ColumnDefinition Width="185*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txtName" Margin="29,47,23,22.8" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2"/>
+        <TextBox x:Name="txtSurname" Margin="25,47,40.6,22.8" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Column="1"/>
+        <TextBox x:Name="txtCell" Margin="29,48.2,23,24.8" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Row="1"/>
+        <TextBox x:Name="txtIDNo" Margin="25,48.2,40.6,24.8" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="txtAdd" Margin="29,48.2,23,20" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Row="2"/>
+        <TextBox x:Name="txtMedicalAidNo" Margin="25,48.2,40.6,20" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Column="1" Grid.Row="2"/>
+        <Button x:Name="btnNewMedicalAid" Content="New Medical Aid Co" Margin="25,29,40.6,26" Background="#FF3699F1" BorderBrush="#FF3699F1" BorderThickness="2" Foreground="White" Grid.Column="1" Grid.Row="3" Click="btnNewMedicalAid_Click"/>
+        <Label x:Name="label_Copy" Content="Medical Aid Co" HorizontalAlignment="Left" Margin="29,8,0,0" VerticalAlignment="Top" Grid.Row="3"/>
+        <ComboBox x:Name="cboxMedicalAidCo" Margin="30,34,23,26" Grid.Row="3" DropDownOpened="cboxMedicalAidCo_DropDownOpened"/>
+        <Button x:Name="btnSaveNew" Content="Save New Patient" Margin="24,36,41.6,21.6" Background="White" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Row="4" Click="btnSaveNew_Click" Grid.Column="1"/>
+        <Label x:Name="label_Copy1" Content="Medical Aid No" HorizontalAlignment="Left" Margin="25,17.2,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
+        <Label x:Name="label_Copy2" Content="Address" HorizontalAlignment="Left" Margin="29,17.2,0,0" VerticalAlignment="Top" Grid.Row="2"/>
+        <Label x:Name="label_Copy3" Content="ID No" HorizontalAlignment="Left" Margin="25,17.2,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="label_Copy4" Content="Cell No" HorizontalAlignment="Left" Margin="29,17.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label x:Name="label_Copy5" Content="Surname" HorizontalAlignment="Left" Margin="25,16,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="label_Copy6" Content="Name" HorizontalAlignment="Left" Margin="30,21,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAccNo" Margin="29,41,23,21.6" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Grid.Row="4"/>
+        <Label x:Name="label_Copy7" Content="Account No" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Grid.Row="4"/>
+
+    </Grid>
+</Window>

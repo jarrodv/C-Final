@@ -1,0 +1,19 @@
+﻿<Window x:Class="CTUCare.NewMedicine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTUCare"
+        mc:Ignorable="d"
+        Title="New Medicine" Height="256.667" Width="247.778"
+        Icon="images/Picture5.png"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <TextBox x:Name="txtName" Margin="28,46,0,0" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="179"/>
+        <Label x:Name="label" Content="Medicine Name" HorizontalAlignment="Left" Margin="28,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice" Margin="28,113,0,0" TextWrapping="Wrap" BorderBrush="#FF3699F1" BorderThickness="2" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="179"/>
+        <Label x:Name="label_Copy" Content="Price" HorizontalAlignment="Left" Margin="28,87,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSaveNew" Content="Save New Medicine" Margin="51,171,0,0" Background="White" BorderBrush="#FF3699F1" BorderThickness="2" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" Click="btnSaveNew_Click"/>
+
+    </Grid>
+</Window>

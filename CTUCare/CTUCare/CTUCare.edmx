@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CTUCare.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+        </EntityType>
+        <EntityType Name="AdministeredMedicine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="MedicineID" Type="int" />
+          <Property Name="DateAdministeredID" Type="int" />
+        </EntityType>
+        <EntityType Name="AdministeredProcedure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="ProcedureID" Type="int" />
+          <Property Name="EntryDateID" Type="int" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="IntakeDateID" Type="int" />
+          <Property Name="SheduledDispatchDate" Type="date" />
+          <Property Name="DispatchDateID" Type="int" />
+          <Property Name="DrID" Type="int" />
+        </EntityType>
+        <EntityType Name="DispatchDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="DispatchDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ConsultationFee" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntryDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="DateEntered" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MedicalAid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cell" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="MedicalAidID" Type="int" />
+          <Property Name="MedicalAidNo" Type="varchar" MaxLength="10" />
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsUserAdmin" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Accounts__Patien__31EC6D26">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__DateA__1FCDBCEB">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="DateAdministeredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Entry__2F10007B">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="EntryDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Medic__1ED998B2">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="MedicineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Patie__1DE57479">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Patie__2D27B809">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Proce__2E1BDC42">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="ProcedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Dispa__29572725">
+          <End Role="DispatchDate" Type="Self.DispatchDate" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DispatchDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DispatchDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Intak__286302EC">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IntakeDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Patie__276EDEB3">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointmen__DrID__2A4B4B5E">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DispatchD__Patie__24927208">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="DispatchDate" Type="Self.DispatchDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DispatchDate">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EntryDate__Patie__1B0907CE">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EntryDate">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Medical__1273C1CD">
+          <End Role="MedicalAid" Type="Self.MedicalAid" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalAid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="MedicalAidID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTUCareStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministeredMedicine" EntityType="Self.AdministeredMedicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministeredProcedure" EntityType="Self.AdministeredProcedure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispatchDate" EntityType="Self.DispatchDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntryDate" EntityType="Self.EntryDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalAid" EntityType="Self.MedicalAid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procedure" EntityType="Self.Procedure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Accounts__Patien__31EC6D26" Association="Self.FK__Accounts__Patien__31EC6D26">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__DateA__1FCDBCEB" Association="Self.FK__Administe__DateA__1FCDBCEB">
+            <End Role="EntryDate" EntitySet="EntryDate" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Entry__2F10007B" Association="Self.FK__Administe__Entry__2F10007B">
+            <End Role="EntryDate" EntitySet="EntryDate" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedure" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Medic__1ED998B2" Association="Self.FK__Administe__Medic__1ED998B2">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Patie__1DE57479" Association="Self.FK__Administe__Patie__1DE57479">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Patie__2D27B809" Association="Self.FK__Administe__Patie__2D27B809">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedure" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Proce__2E1BDC42" Association="Self.FK__Administe__Proce__2E1BDC42">
+            <End Role="Procedure" EntitySet="Procedure" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedure" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Dispa__29572725" Association="Self.FK__Appointme__Dispa__29572725">
+            <End Role="DispatchDate" EntitySet="DispatchDate" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Intak__286302EC" Association="Self.FK__Appointme__Intak__286302EC">
+            <End Role="EntryDate" EntitySet="EntryDate" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Patie__276EDEB3" Association="Self.FK__Appointme__Patie__276EDEB3">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointmen__DrID__2A4B4B5E" Association="Self.FK__Appointmen__DrID__2A4B4B5E">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DispatchD__Patie__24927208" Association="Self.FK__DispatchD__Patie__24927208">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="DispatchDate" EntitySet="DispatchDate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EntryDate__Patie__1B0907CE" Association="Self.FK__EntryDate__Patie__1B0907CE">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="EntryDate" EntitySet="EntryDate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Medical__1273C1CD" Association="Self.FK__Patient__Medical__1273C1CD">
+            <End Role="MedicalAid" EntitySet="MedicalAid" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CTUCare" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Accounts__Patien__31EC6D26" FromRole="Accounts" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="AdministeredMedicine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="MedicineID" Type="Int32" />
+          <Property Name="DateAdministeredID" Type="Int32" />
+          <NavigationProperty Name="EntryDate" Relationship="Self.FK__Administe__DateA__1FCDBCEB" FromRole="AdministeredMedicine" ToRole="EntryDate" />
+          <NavigationProperty Name="Medicine" Relationship="Self.FK__Administe__Medic__1ED998B2" FromRole="AdministeredMedicine" ToRole="Medicine" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Administe__Patie__1DE57479" FromRole="AdministeredMedicine" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="AdministeredProcedure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="ProcedureID" Type="Int32" />
+          <Property Name="EntryDateID" Type="Int32" />
+          <NavigationProperty Name="EntryDate" Relationship="Self.FK__Administe__Entry__2F10007B" FromRole="AdministeredProcedure" ToRole="EntryDate" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Administe__Patie__2D27B809" FromRole="AdministeredProcedure" ToRole="Patient" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK__Administe__Proce__2E1BDC42" FromRole="AdministeredProcedure" ToRole="Procedure" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="IntakeDateID" Type="Int32" />
+          <Property Name="SheduledDispatchDate" Type="DateTime" Precision="0" />
+          <Property Name="DispatchDateID" Type="Int32" />
+          <Property Name="DrID" Type="Int32" />
+          <NavigationProperty Name="DispatchDate" Relationship="Self.FK__Appointme__Dispa__29572725" FromRole="Appointment" ToRole="DispatchDate" />
+          <NavigationProperty Name="EntryDate" Relationship="Self.FK__Appointme__Intak__286302EC" FromRole="Appointment" ToRole="EntryDate" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__276EDEB3" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Appointmen__DrID__2A4B4B5E" FromRole="Appointment" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="DispatchDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="DispatchDate1" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Dispa__29572725" FromRole="DispatchDate" ToRole="Appointment" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__DispatchD__Patie__24927208" FromRole="DispatchDate" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConsultationFee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointmen__DrID__2A4B4B5E" FromRole="Doctor" ToRole="Appointment" />
+        </EntityType>
+        <EntityType Name="EntryDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <NavigationProperty Name="AdministeredMedicines" Relationship="Self.FK__Administe__DateA__1FCDBCEB" FromRole="EntryDate" ToRole="AdministeredMedicine" />
+          <NavigationProperty Name="AdministeredProcedures" Relationship="Self.FK__Administe__Entry__2F10007B" FromRole="EntryDate" ToRole="AdministeredProcedure" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Intak__286302EC" FromRole="EntryDate" ToRole="Appointment" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__EntryDate__Patie__1B0907CE" FromRole="EntryDate" ToRole="Patient" />
+          <Property Name="DateEntered" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MedicalAid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK__Patient__Medical__1273C1CD" FromRole="MedicalAid" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="AdministeredMedicines" Relationship="Self.FK__Administe__Medic__1ED998B2" FromRole="Medicine" ToRole="AdministeredMedicine" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cell" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MedicalAidID" Type="Int32" />
+          <Property Name="MedicalAidNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__Patien__31EC6D26" FromRole="Patient" ToRole="Accounts" />
+          <NavigationProperty Name="AdministeredMedicines" Relationship="Self.FK__Administe__Patie__1DE57479" FromRole="Patient" ToRole="AdministeredMedicine" />
+          <NavigationProperty Name="AdministeredProcedures" Relationship="Self.FK__Administe__Patie__2D27B809" FromRole="Patient" ToRole="AdministeredProcedure" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__276EDEB3" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="DispatchDates" Relationship="Self.FK__DispatchD__Patie__24927208" FromRole="Patient" ToRole="DispatchDate" />
+          <NavigationProperty Name="EntryDates" Relationship="Self.FK__EntryDate__Patie__1B0907CE" FromRole="Patient" ToRole="EntryDate" />
+          <NavigationProperty Name="MedicalAid" Relationship="Self.FK__Patient__Medical__1273C1CD" FromRole="Patient" ToRole="MedicalAid" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="AdministeredProcedures" Relationship="Self.FK__Administe__Proce__2E1BDC42" FromRole="Procedure" ToRole="AdministeredProcedure" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUserAdmin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Accounts__Patien__31EC6D26">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__DateA__1FCDBCEB">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="DateAdministeredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Medic__1ED998B2">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="MedicineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Patie__1DE57479">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="AdministeredMedicine" Type="Self.AdministeredMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredMedicine">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Entry__2F10007B">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="EntryDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Patie__2D27B809">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administe__Proce__2E1BDC42">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="0..1" />
+          <End Role="AdministeredProcedure" Type="Self.AdministeredProcedure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministeredProcedure">
+              <PropertyRef Name="ProcedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Dispa__29572725">
+          <End Role="DispatchDate" Type="Self.DispatchDate" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DispatchDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DispatchDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Intak__286302EC">
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntryDate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="IntakeDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Patie__276EDEB3">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointmen__DrID__2A4B4B5E">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DispatchD__Patie__24927208">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="DispatchDate" Type="Self.DispatchDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DispatchDate">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EntryDate__Patie__1B0907CE">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="EntryDate" Type="Self.EntryDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EntryDate">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Medical__1273C1CD">
+          <End Role="MedicalAid" Type="Self.MedicalAid" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalAid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="MedicalAidID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTUCareDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AdministeredMedicines" EntityType="Self.AdministeredMedicine" />
+          <EntitySet Name="AdministeredProcedures" EntityType="Self.AdministeredProcedure" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="DispatchDates" EntityType="Self.DispatchDate" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="EntryDates" EntityType="Self.EntryDate" />
+          <EntitySet Name="MedicalAids" EntityType="Self.MedicalAid" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Accounts__Patien__31EC6D26" Association="Self.FK__Accounts__Patien__31EC6D26">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__DateA__1FCDBCEB" Association="Self.FK__Administe__DateA__1FCDBCEB">
+            <End Role="EntryDate" EntitySet="EntryDates" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Medic__1ED998B2" Association="Self.FK__Administe__Medic__1ED998B2">
+            <End Role="Medicine" EntitySet="Medicines" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Patie__1DE57479" Association="Self.FK__Administe__Patie__1DE57479">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="AdministeredMedicine" EntitySet="AdministeredMedicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Entry__2F10007B" Association="Self.FK__Administe__Entry__2F10007B">
+            <End Role="EntryDate" EntitySet="EntryDates" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Patie__2D27B809" Association="Self.FK__Administe__Patie__2D27B809">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administe__Proce__2E1BDC42" Association="Self.FK__Administe__Proce__2E1BDC42">
+            <End Role="Procedure" EntitySet="Procedures" />
+            <End Role="AdministeredProcedure" EntitySet="AdministeredProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Dispa__29572725" Association="Self.FK__Appointme__Dispa__29572725">
+            <End Role="DispatchDate" EntitySet="DispatchDates" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Intak__286302EC" Association="Self.FK__Appointme__Intak__286302EC">
+            <End Role="EntryDate" EntitySet="EntryDates" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Patie__276EDEB3" Association="Self.FK__Appointme__Patie__276EDEB3">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointmen__DrID__2A4B4B5E" Association="Self.FK__Appointmen__DrID__2A4B4B5E">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DispatchD__Patie__24927208" Association="Self.FK__DispatchD__Patie__24927208">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="DispatchDate" EntitySet="DispatchDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EntryDate__Patie__1B0907CE" Association="Self.FK__EntryDate__Patie__1B0907CE">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="EntryDate" EntitySet="EntryDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Medical__1273C1CD" Association="Self.FK__Patient__Medical__1273C1CD">
+            <End Role="MedicalAid" EntitySet="MedicalAids" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CTUCareStoreContainer" CdmEntityContainer="CTUCareDB">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="CTUCare.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministeredMedicines">
+            <EntityTypeMapping TypeName="CTUCare.AdministeredMedicine">
+              <MappingFragment StoreEntitySet="AdministeredMedicine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+                <ScalarProperty Name="DateAdministeredID" ColumnName="DateAdministeredID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministeredProcedures">
+            <EntityTypeMapping TypeName="CTUCare.AdministeredProcedure">
+              <MappingFragment StoreEntitySet="AdministeredProcedure">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+                <ScalarProperty Name="EntryDateID" ColumnName="EntryDateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="CTUCare.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="IntakeDateID" ColumnName="IntakeDateID" />
+                <ScalarProperty Name="SheduledDispatchDate" ColumnName="SheduledDispatchDate" />
+                <ScalarProperty Name="DispatchDateID" ColumnName="DispatchDateID" />
+                <ScalarProperty Name="DrID" ColumnName="DrID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispatchDates">
+            <EntityTypeMapping TypeName="CTUCare.DispatchDate">
+              <MappingFragment StoreEntitySet="DispatchDate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DispatchDate1" ColumnName="DispatchDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="CTUCare.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConsultationFee" ColumnName="ConsultationFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntryDates">
+            <EntityTypeMapping TypeName="CTUCare.EntryDate">
+              <MappingFragment StoreEntitySet="EntryDate">
+                <ScalarProperty Name="DateEntered" ColumnName="DateEntered" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalAids">
+            <EntityTypeMapping TypeName="CTUCare.MedicalAid">
+              <MappingFragment StoreEntitySet="MedicalAid">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="CTUCare.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="CTUCare.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="MedicalAidID" ColumnName="MedicalAidID" />
+                <ScalarProperty Name="MedicalAidNo" ColumnName="MedicalAidNo" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedures">
+            <EntityTypeMapping TypeName="CTUCare.Procedure">
+              <MappingFragment StoreEntitySet="Procedure">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CTUCare.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsUserAdmin" ColumnName="IsUserAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

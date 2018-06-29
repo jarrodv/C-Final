@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f975c4878e640e892c6b29512501c8e" Name="Diagram1" ZoomLevel="116">
+        <EntityTypeShape EntityType="CTUCare.Account" Width="1.5" PointX="2.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.AdministeredMedicine" Width="1.5" PointX="10.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.AdministeredProcedure" Width="1.5" PointX="6.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.Appointment" Width="1.5" PointX="4.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.DispatchDate" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.Doctor" Width="1.5" PointX="2.625" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.EntryDate" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.MedicalAid" Width="1.5" PointX="2.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.Medicine" Width="1.5" PointX="9.625" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.Patient" Width="1.5" PointX="4.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.Procedure" Width="1.5" PointX="6.625" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTUCare.User" Width="1.5" PointX="0.625" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="CTUCare.FK__Accounts__Patien__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__DateA__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__Medic__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__Patie__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__Entry__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__Patie__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Administe__Proce__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Appointme__Dispa__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Appointme__Intak__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Appointme__Patie__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Appointmen__DrID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__DispatchD__Patie__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__EntryDate__Patie__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="CTUCare.FK__Patient__Medical__1273C1CD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="CTUCare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTUCare"
+        mc:Ignorable="d"
+        WindowStyle="None" Background="White" BorderBrush="White"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Height="199.2" Width="402.133" BorderThickness="3">
+    <Grid Background="#FF3699F1" Margin="0,0,0.2,0.4">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="102" Margin="39,46,0,0" VerticalAlignment="Top" Width="90">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Images/Picture4.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="220,96,0,0" TextWrapping="Wrap" Text="CTU Care" VerticalAlignment="Top" Height="75" Width="159" Foreground="White" FontSize="24" FontFamily="SnasmW00-Regular"/>
+        <ProgressBar x:Name="loader" HorizontalAlignment="Left" Height="22" Margin="220,126,0,0" VerticalAlignment="Top" Width="128" BorderBrush="White" Background="White" Foreground="#FF3699F1"/>
+
+    </Grid>
+</Window>

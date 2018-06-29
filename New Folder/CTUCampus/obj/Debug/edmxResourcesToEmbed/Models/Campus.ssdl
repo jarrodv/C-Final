@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CampusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Parents">
+    <Key>
+      <PropertyRef Name="ParentID" />
+    </Key>
+    <Property Name="ParentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parentName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="parentSurname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="parentIDNumber" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="parentAge" Type="int" Nullable="false" />
+    <Property Name="parentContactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="studentSurname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="studentIDNumber" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="studentAge" Type="int" Nullable="false" />
+    <Property Name="studentContactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="studentUserName" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="studentPassword" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="studentParentID" Type="int" />
+  </EntityType>
+  <Association Name="FK__Students__studen__1273C1CD">
+    <End Role="Parents" Type="Self.Parents" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parents">
+        <PropertyRef Name="ParentID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="studentParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CampusModelStoreContainer">
+    <EntitySet Name="Parents" EntityType="Self.Parents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Students__studen__1273C1CD" Association="Self.FK__Students__studen__1273C1CD">
+      <End Role="Parents" EntitySet="Parents" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CTUCareStoreContainer" CdmEntityContainer="CTUCareDB">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="CTUCare.Account">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministeredMedicines">
+      <EntityTypeMapping TypeName="CTUCare.AdministeredMedicine">
+        <MappingFragment StoreEntitySet="AdministeredMedicine">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="DateAdministeredID" ColumnName="DateAdministeredID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministeredProcedures">
+      <EntityTypeMapping TypeName="CTUCare.AdministeredProcedure">
+        <MappingFragment StoreEntitySet="AdministeredProcedure">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+          <ScalarProperty Name="EntryDateID" ColumnName="EntryDateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="CTUCare.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="IntakeDateID" ColumnName="IntakeDateID" />
+          <ScalarProperty Name="SheduledDispatchDate" ColumnName="SheduledDispatchDate" />
+          <ScalarProperty Name="DispatchDateID" ColumnName="DispatchDateID" />
+          <ScalarProperty Name="DrID" ColumnName="DrID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispatchDates">
+      <EntityTypeMapping TypeName="CTUCare.DispatchDate">
+        <MappingFragment StoreEntitySet="DispatchDate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="DispatchDate1" ColumnName="DispatchDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="CTUCare.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ConsultationFee" ColumnName="ConsultationFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntryDates">
+      <EntityTypeMapping TypeName="CTUCare.EntryDate">
+        <MappingFragment StoreEntitySet="EntryDate">
+          <ScalarProperty Name="DateEntered" ColumnName="DateEntered" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalAids">
+      <EntityTypeMapping TypeName="CTUCare.MedicalAid">
+        <MappingFragment StoreEntitySet="MedicalAid">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="CTUCare.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="CTUCare.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="MedicalAidID" ColumnName="MedicalAidID" />
+          <ScalarProperty Name="MedicalAidNo" ColumnName="MedicalAidNo" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="CTUCare.Procedure">
+        <MappingFragment StoreEntitySet="Procedure">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CTUCare.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsUserAdmin" ColumnName="IsUserAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

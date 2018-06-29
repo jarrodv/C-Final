@@ -1,0 +1,28 @@
+﻿<Window x:Class="CTUCare.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CTUCare"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="300"
+        Icon="images/picture5.png" BorderThickness="3" BorderBrush="#FF3699F1"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txtUserName" Height="23" Margin="39,95,39.6,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="#FF3699F1" BorderThickness="1.5"/>
+        <Label x:Name="label" Content="Username" HorizontalAlignment="Left" Margin="39,64,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="39,124,0,0" VerticalAlignment="Top" Width="83"/>
+        <PasswordBox x:Name="txtPassword" Margin="39,155,40,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="23" BorderBrush="#FF3699F1" BorderThickness="1.5"/>
+        <Button x:Name="btnLogin" Content="Login" Margin="39,198,166,0" VerticalAlignment="Top" BorderBrush="#FF3699F1" BorderThickness="1.5" Background="White" Height="25" Click="btnLogin_Click"/>
+        <Button x:Name="btnAddUser" Content="Add User" Margin="165,198,40,0" VerticalAlignment="Top" BorderBrush="#FF3699F1" BorderThickness="1.5" Background="White" Height="25" Click="btnAddUser_Click"/>
+        <Rectangle Height="79" Margin="202,10,34,0" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Images/Picture5.png" Stretch="Uniform"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+    </Grid>
+</Window>
